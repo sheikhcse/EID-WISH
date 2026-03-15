@@ -314,3 +314,10 @@ get(unlockRef).then((snap) => {
 }).catch((error) => {
   console.error("Firebase read error:", error);
 });
+window.openCard = function(){
+
+const card = document.querySelector(".eid-card");
+
+card.classList.toggle("open");
+
+}
