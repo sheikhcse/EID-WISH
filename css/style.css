@@ -492,3 +492,66 @@ button:hover{
   .lantern{transform:scale(.85)}
   .gift-box-big{font-size:72px;}
 }
+/* Eid Card */
+
+.eid-card-section{
+margin-top:30px;
+text-align:center;
+}
+
+.card-title{
+color:#ffd369;
+margin-bottom:20px;
+}
+
+.eid-card{
+width:340px;
+height:220px;
+margin:auto;
+position:relative;
+cursor:pointer;
+perspective:1000px;
+}
+
+.card-front,
+.card-inside{
+
+position:absolute;
+width:100%;
+height:100%;
+border-radius:16px;
+background:#caa7ff;
+color:#222;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+transition:transform .7s;
+backface-visibility:hidden;
+box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+}
+
+.card-front{
+background:#d7b9ff;
+}
+
+.card-inside{
+transform:rotateY(180deg);
+background:white;
+padding:20px;
+text-align:center;
+}
+
+.eid-card.open .card-front{
+transform:rotateY(180deg);
+}
+
+.eid-card.open .card-inside{
+transform:rotateY(0deg);
+}
+
+.heart{
+font-size:36px;
+margin-bottom:10px;
+}
