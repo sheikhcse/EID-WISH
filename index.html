@@ -1,1 +1,158 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eid Surprise Final</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="sky" id="sky"></div>
+  <div class="lantern-layer" id="lanternLayer"></div>
+  <div class="moon-wrap"><div class="moon"></div></div>
+
+  <section id="welcomeScreen" class="welcome-screen">
+    <div class="welcome-card" id="welcomeCard">
+      <div class="badge">A little Eid surprise 🌙</div>
+
+      <div class="cartoon-row">
+        <span>🌙</span>
+        <span>☁️</span>
+        <span>⭐</span>
+        <span>🕌</span>
+        <span>🧸</span>
+        <span>🎁</span>
+      </div>
+
+      <h1>A little moonlit surprise awaits...</h1>
+
+      <p class="lead">
+        Eid wish with soft vibes, tiny surprises, and a very tiny virtual Eidi waiting inside.
+      </p>
+
+      <button onclick="enterPage()" id="enterBtn">Unlock a little Eid magic 🎁</button>
+
+      <div class="admin-bottom">
+        <div class="admin-link" onclick="openAdminLogin()">Admin access</div>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap hidden" id="mainContent">
+    <div class="badge">For Eid 🌙✨</div>
+
+    <section id="countdownView">
+      <h1>Counting down to Eid</h1>
+      <p class="lead">
+        Eid wish with soft vibes, tiny surprises, and a very tiny virtual Eidi waiting inside.
+      </p>
+
+      <div class="count-card">
+        <div id="countdown">Loading...</div>
+      </div>
+
+      <div id="lockBox" class="lock-box">
+        <div class="action-row">
+          <button id="nextStepBtn" onclick="tryOpenEidContent()">Open Eid surprise 🌙</button>
+        </div>
+        <div id="publicStatus" class="status">Checking unlock status...</div>
+      </div>
+    </section>
+
+    <section id="eidView" class="hidden">
+      <h1 id="eidTitle">Eid Mubarak Tasnu 🌙</h1>
+      <p class="lead">
+        For you, a peaceful Eid wish filled with soft moments, gentle smiles, good food, and beautiful memories.
+      </p>
+    </section>
+
+    <section id="content" class="hidden">
+      <div class="grid">
+        <div class="card">
+          <h3>Little wish</h3>
+          <p>May this Eid bring you calm days, sweet memories, and a heart that feels light.</p>
+        </div>
+
+        <div class="card">
+          <h3>Cute note</h3>
+          <p>Hope your Eid outfit looks perfect, tomar pictures gula khub shundor ashe, ar mood tao onek bhalo thake 😄</p>
+        </div>
+
+        <div class="card">
+          <h3>Funny corner</h3>
+          <p>Eid reminder: eat like nobody is judging… tarpor biryani ke blame koro 🍽️</p>
+        </div>
+      </div>
+
+      <h2>Small messages for you</h2>
+      <div class="chips">
+        <div class="chip">May your day be soft and pretty 🌙</div>
+        <div class="chip">Hope your smile stays longer than your battery today 😄</div>
+        <div class="chip">Eat dessert first if nobody is watching 🍰</div>
+        <div class="chip">May your relatives be calmer and your food be better 😌</div>
+        <div class="chip">Wishing you peace, joy, and top-tier Eid food ✨</div>
+        <div class="chip">May your pictures be iconic and your Eid extra cozy 📸</div>
+      </div>
+
+      <h2>A nice quote</h2>
+      <div class="quote-box">“The smallest moments of joy often become the brightest memories.”</div>
+
+      <h2>Random Eid message</h2>
+      <div class="action-row">
+        <button onclick="randomMessage()">Tap for Eid message</button>
+        <button onclick="celebrate()">Celebrate Eid 🎉</button>
+      </div>
+      <div class="message-box" id="messageBox">Press the button and let Eid randomness happen 🌟</div>
+
+      <h2>Virtual Eidi 🎁</h2>
+      <div class="action-row">
+        <button onclick="eidi()">Claim tiny Eidi</button>
+      </div>
+      <div class="eidi-box" id="eidiBox">Your tiny virtual Eidi is waiting 😄</div>
+
+      <h2>Real gift surprise 🎁</h2>
+      <div class="gift-box-big" id="giftBox" onclick="openGift()">🎁</div>
+      <div class="tiny-hint">Tap the gift box to open the real Eid surprise 👀</div>
+
+      <div class="action-row">
+        <button onclick="toggleMusic()" id="musicBtn">Play soft music 🎵</button>
+      </div>
+
+      <audio id="bgMusic" loop>
+        <source src="assets/audio/ReelAudio-97737.mp3" type="audio/mpeg" />
+      </audio>
+
+      <div class="surprise-wrap">
+        <div class="tiny-hint">Hidden surprise button below 👀</div>
+        <button class="secret-btn" onclick="secretSurprise()" aria-label="Hidden surprise"></button>
+      </div>
+    </section>
+
+    <section id="adminPanel" class="admin-box hidden">
+      <h3>Admin control</h3>
+      <p class="lead">
+        Tumi ekhane theke user der access control korte parbe.
+      </p>
+      <div class="status" id="adminStatus">Admin mode active.</div>
+      <div class="action-row">
+        <button onclick="unlockForEveryone()">Unlock for everyone 🌙</button>
+        <button onclick="lockForEveryone()">Lock again 🔒</button>
+        <button onclick="openEverythingForAdmin()">Preview full page 👀</button>
+      </div>
+    </section>
+
+    <div id="eidPopup" class="eid-popup hidden" style="display:none;">
+      <div class="eid-popup-card">
+        <div class="popup-moon">🌙</div>
+        <h2>Eid Mubarak Tasnu ✨</h2>
+      </div>
+    </div>
+
+    <p class="footer">Made with a little thought and a lot of Eid vibes 🌙</p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>
