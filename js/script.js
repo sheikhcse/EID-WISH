@@ -15,7 +15,7 @@ const firebaseConfig = {
 const adminPassword = "Jannat";
 
 /* আজ সন্ধ্যা 6:30 PM পর্যন্ত countdown */
-const countdownTargetDate = new Date("2026-03-20T18:30:00");
+const countdownTargetDate = new Date("2026-03-20T18:30:00+06:00");
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
