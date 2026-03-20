@@ -13,7 +13,9 @@ const firebaseConfig = {
 };
 
 const adminPassword = "Jannat";
-const chandRaatAutoDate = new Date("2026-03-21T18:00:00");
+
+/* আজ সন্ধ্যা 6:30 PM পর্যন্ত countdown */
+const countdownTargetDate = new Date("2026-03-20T18:30:00");
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
@@ -39,36 +41,41 @@ const lanternLayer = document.getElementById("lanternLayer");
 const eidTitle = document.getElementById("eidTitle");
 const bgMusic = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
-const publicStatus = document.getElementById("publicStatus");
 const adminPanel = document.getElementById("adminPanel");
 const adminStatus = document.getElementById("adminStatus");
 const lockBox = document.getElementById("lockBox");
 const eidPopup = document.getElementById("eidPopup");
 const moonWrap = document.querySelector(".moon-wrap");
 
-if (bgMusic) bgMusic.volume = 0.35;
+if (bgMusic) {
+  bgMusic.volume = 0.35;
+}
 
-function makeStars(){
-  for(let i = 0; i < 56; i++){
+function makeStars() {
+  if (!sky) return;
+
+  for (let i = 0; i < 56; i++) {
     const star = document.createElement("span");
     star.className = "star";
     star.style.left = Math.random() * 100 + "%";
     star.style.top = Math.random() * 100 + "%";
-    star.style.animationDelay = (Math.random() * 4) + "s";
+    star.style.animationDelay = Math.random() * 4 + "s";
     star.style.opacity = Math.random().toFixed(2);
     sky.appendChild(star);
   }
 }
 
-function makeLanterns(){
+function makeLanterns() {
+  if (!lanternLayer) return;
+
   const lanternPositions = [8, 18, 82, 92];
   lanternPositions.forEach((x, idx) => {
-    const l = document.createElement("div");
-    l.className = "lantern";
-    l.style.left = x + "%";
-    l.style.top = (idx % 2 === 0 ? 12 : 18) + "px";
-    l.style.animationDelay = (idx * 0.6) + "s";
-    lanternLayer.appendChild(l);
+    const lantern = document.createElement("div");
+    lantern.className = "lantern";
+    lantern.style.left = x + "%";
+    lantern.style.top = (idx % 2 === 0 ? 12 : 18) + "px";
+    lantern.style.animationDelay = idx * 0.6 + "s";
+    lanternLayer.appendChild(lantern);
   });
 }
 
@@ -78,63 +85,94 @@ makeLanterns();
 const messages = [
   "Hope your Eid is full of smiles 😊",
   "May your day be peaceful, cozy, and pretty 🌙",
-  "Hope your Eidi mood stays high all day 😄",
+  "Hope your Eid mood stays soft and happy all day 😄",
   "May your selfies come out perfect on the first try 📸",
   "Good food, soft moments, and zero awkward relative questions ✨",
   "Eat first, be cute later. Eid priorities 🍰",
-  "May your plate stay full and your problems stay quiet 😌"
+  "May your plate stay full and your worries stay quiet 😌"
 ];
 
-window.randomMessage = function(){
+window.randomMessage = function () {
+  if (!messageBox) return;
   const random = messages[Math.floor(Math.random() * messages.length)];
   messageBox.textContent = random;
 };
 
-window.eidi = function(){
+window.eidi = function () {
+  if (!eidiBox) return;
   eidiBox.textContent = "You received 0.00000001 tk virtual Eidi 😄";
 };
 
-function fireworksBurst(){
+function fireworksBurst() {
   if (!window.confetti) return;
-  window.confetti({ particleCount: 220, spread: 140, origin: { y: 0.6 } });
+
+  window.confetti({
+    particleCount: 220,
+    spread: 140,
+    origin: { y: 0.6 }
+  });
+
   setTimeout(() => {
-    window.confetti({ particleCount: 140, spread: 100, origin: { y: 0.55 } });
+    window.confetti({
+      particleCount: 140,
+      spread: 100,
+      origin: { y: 0.55 }
+    });
   }, 400);
+
   setTimeout(() => {
-    window.confetti({ particleCount: 180, spread: 160, origin: { y: 0.5 } });
+    window.confetti({
+      particleCount: 180,
+      spread: 160,
+      origin: { y: 0.5 }
+    });
   }, 850);
 }
 
-window.celebrate = function(){
+window.celebrate = function () {
   fireworksBurst();
 };
 
-window.secretSurprise = function(){
+window.secretSurprise = function () {
   fireworksBurst();
-  messageBox.textContent = "Secret Eid surprise unlocked ✨ Tiny joy delivered successfully 😌";
-  eidiBox.textContent = "Bonus hidden Eidi: 0.00000001 tk + extra Eid vibe 🎁";
+
+  if (messageBox) {
+    messageBox.textContent = "Secret Eid surprise unlocked ✨ Tiny joy delivered successfully 😌";
+  }
+
+  if (eidiBox) {
+    eidiBox.textContent = "Bonus hidden Eidi: 0.00000001 tk + extra Eid vibe 🎁";
+  }
 };
 
-window.toggleMusic = function(){
+window.toggleMusic = function () {
+  if (!bgMusic || !musicBtn) return;
+
   if (bgMusic.paused) {
-    bgMusic.play().then(() => {
-      musicBtn.textContent = "Pause soft music 🎵";
-    }).catch(() => {
-      messageBox.textContent = "Music file add korle song play hobe 🎵";
-    });
+    bgMusic.volume = 0.35;
+    bgMusic.play()
+      .then(() => {
+        musicBtn.textContent = "Pause soft music 🎵";
+      })
+      .catch((error) => {
+        console.error("Play error:", error);
+      });
   } else {
     bgMusic.pause();
     musicBtn.textContent = "Play soft music 🎵";
   }
 };
 
-function hidePopup(){
+function hidePopup() {
+  if (!eidPopup) return;
   eidPopup.classList.remove("show");
   eidPopup.classList.add("hidden");
   eidPopup.style.display = "none";
 }
 
-function openPopup(){
+function openPopup() {
+  if (!eidPopup) return;
+
   eidPopup.classList.remove("hidden");
   eidPopup.classList.add("show");
   eidPopup.style.display = "flex";
@@ -144,20 +182,26 @@ function openPopup(){
   }, 2000);
 }
 
-window.openGift = function(){
+window.openGift = function () {
   if (giftOpened) return;
+
   giftOpened = true;
-  openPopup();
   fireworksBurst();
-  eidiBox.textContent = "Gift opened successfully 🎁";
+  openPopup();
+
+  if (eidiBox) {
+    eidiBox.textContent = "Gift opened successfully 🎁";
+  }
 };
 
-function updateCountdown(){
+function updateCountdown() {
+  if (!countdownEl) return;
+
   const now = new Date();
-  const diff = chandRaatAutoDate.getTime() - now.getTime();
+  const diff = countdownTargetDate.getTime() - now.getTime();
 
   if (diff <= 0) {
-    countdownEl.textContent = "Chand Raat is here 🌙";
+    countdownEl.textContent = "The wait is over 🌙";
     return;
   }
 
@@ -169,29 +213,34 @@ function updateCountdown(){
   countdownEl.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
 }
 
-function startCountdown(){
+function startCountdown() {
   if (countdownStarted) return;
   countdownStarted = true;
   updateCountdown();
   setInterval(updateCountdown, 1000);
 }
 
-function showLockedView(){
-  countdownView.classList.remove("hidden");
-  lockBox.classList.remove("hidden");
-  eidView.classList.add("hidden");
-  content.classList.add("hidden");
+function showLockedView() {
+  if (countdownView) countdownView.classList.remove("hidden");
+  if (lockBox) lockBox.classList.remove("hidden");
+  if (eidView) eidView.classList.add("hidden");
+  if (content) content.classList.add("hidden");
+
   hidePopup();
   giftOpened = false;
   eidModeShown = false;
 }
 
-function showEidMode(){
-  countdownView.classList.add("hidden");
-  eidView.classList.remove("hidden");
-  content.classList.remove("hidden");
-  lockBox.classList.add("hidden");
-  eidTitle.classList.add("reveal-animate");
+function showEidMode() {
+  if (countdownView) countdownView.classList.add("hidden");
+  if (eidView) eidView.classList.remove("hidden");
+  if (content) content.classList.remove("hidden");
+  if (lockBox) lockBox.classList.add("hidden");
+
+  if (eidTitle) {
+    eidTitle.textContent = "Eid Mubarak 🌙";
+    eidTitle.classList.add("reveal-animate");
+  }
 
   if (!eidModeShown) {
     eidModeShown = true;
@@ -203,20 +252,25 @@ function showEidMode(){
     openPopup();
     fireworksBurst();
 
-    if (bgMusic && bgMusic.paused) {
-      bgMusic.play().then(() => {
-        musicBtn.textContent = "Pause soft music 🎵";
-      }).catch(() => {
-        messageBox.textContent = "Music file add korle song play hobe 🎵";
-      });
+    if (bgMusic && bgMusic.paused && musicBtn) {
+      bgMusic.play()
+        .then(() => {
+          musicBtn.textContent = "Pause soft music 🎵";
+        })
+        .catch((error) => {
+          console.error("Auto music play error:", error);
+        });
     }
   }
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-window.enterPage = function(){
+window.enterPage = function () {
+  if (!welcomeCard || !welcomeScreen || !mainContent) return;
+
   welcomeCard.classList.add("opening");
+
   setTimeout(() => {
     welcomeScreen.classList.add("hidden");
     mainContent.classList.remove("hidden");
@@ -225,34 +279,35 @@ window.enterPage = function(){
   }, 650);
 };
 
-window.tryOpenEidContent = function(){
-  if (isUnlocked || isAdmin) {
+window.tryOpenEidContent = function () {
+  const now = new Date();
+
+  if (isUnlocked || isAdmin || now >= countdownTargetDate) {
     showEidMode();
   } else {
     showLockedView();
-    if (publicStatus) {
-      publicStatus.textContent = "Locked by admin. You cannot open it now 🔒";
-      publicStatus.className = "status danger";
-    }
   }
 };
 
-window.openAdminLogin = function(){
+window.openAdminLogin = function () {
   const entered = prompt("Enter admin password:");
   if (!entered) return;
 
   if (entered === adminPassword) {
     isAdmin = true;
-    welcomeScreen.classList.add("hidden");
-    mainContent.classList.remove("hidden");
-    mainContent.classList.add("showing");
-    adminPanel.classList.remove("hidden");
-    adminStatus.textContent = "Admin mode active. Tumi sob dekhte parbe.";
-    adminStatus.className = "status ok";
 
-    if (publicStatus) {
-      publicStatus.textContent = "Admin mode: full control active.";
-      publicStatus.className = "status ok";
+    if (welcomeScreen) welcomeScreen.classList.add("hidden");
+
+    if (mainContent) {
+      mainContent.classList.remove("hidden");
+      mainContent.classList.add("showing");
+    }
+
+    if (adminPanel) adminPanel.classList.remove("hidden");
+
+    if (adminStatus) {
+      adminStatus.textContent = "Admin mode active. You can preview and control everything.";
+      adminStatus.className = "status ok";
     }
 
     startCountdown();
@@ -261,22 +316,24 @@ window.openAdminLogin = function(){
   }
 };
 
-window.openEverythingForAdmin = function(){
+window.openEverythingForAdmin = function () {
   if (!isAdmin) return;
   showEidMode();
 };
 
-window.unlockForEveryone = async function(){
-  if (!isAdmin) return;
+window.unlockForEveryone = async function () {
+  if (!isAdmin || !adminStatus) return;
+
   await set(unlockRef, true);
-  adminStatus.textContent = "Unlocked for everyone. Ora jekono time page open korte parbe.";
+  adminStatus.textContent = "Unlocked for everyone. They can open the Eid surprise now.";
   adminStatus.className = "status ok";
 };
 
-window.lockForEveryone = async function(){
-  if (!isAdmin) return;
+window.lockForEveryone = async function () {
+  if (!isAdmin || !adminStatus) return;
+
   await set(unlockRef, false);
-  adminStatus.textContent = "Locked again. Ora ekhon page open korte parbe na.";
+  adminStatus.textContent = "Locked again. Users cannot open the Eid surprise right now.";
   adminStatus.className = "status danger";
 };
 
@@ -285,39 +342,34 @@ onValue(unlockRef, (snapshot) => {
   isUnlocked = snapshot.val() === true;
 
   if (isUnlocked) {
-    if (publicStatus) {
-      publicStatus.textContent = "Unlocked by admin. You can open it now 🌙";
-      publicStatus.className = "status ok";
-    }
-
-    if (!wasUnlocked && !isAdmin && !mainContent.classList.contains("hidden")) {
+    if (!wasUnlocked && !isAdmin && mainContent && !mainContent.classList.contains("hidden")) {
       showEidMode();
     }
   } else {
-    if (publicStatus) {
-      publicStatus.textContent = "Locked by admin. You cannot open it now 🔒";
-      publicStatus.className = "status danger";
-    }
-
-    if (!isAdmin && !mainContent.classList.contains("hidden")) {
-      showLockedView();
+    if (!isAdmin && mainContent && !mainContent.classList.contains("hidden")) {
+      const now = new Date();
+      if (now < countdownTargetDate) {
+        showLockedView();
+      }
     }
   }
 
   updateCountdown();
 });
 
-get(unlockRef).then((snap) => {
-  if (!snap.exists()) {
-    set(unlockRef, false);
+get(unlockRef)
+  .then((snap) => {
+    if (!snap.exists()) {
+      set(unlockRef, false);
+    }
+  })
+  .catch((error) => {
+    console.error("Firebase read error:", error);
+  });
+
+window.openCard = function () {
+  const card = document.getElementById("openEidCard");
+  if (card) {
+    card.classList.toggle("open");
   }
-}).catch((error) => {
-  console.error("Firebase read error:", error);
-});
-window.openCard = function(){
-
-const card = document.querySelector(".eid-card");
-
-card.classList.toggle("open");
-
-}
+};
