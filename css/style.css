@@ -6,13 +6,18 @@
   --gold2:#ffefb3;
   --text:#f8f4ea;
   --muted:#d6d0c4;
-  --line:rgba(255,255,255,0.1);
+  --line:rgba(255,255,255,.1);
   --shadow:0 14px 35px rgba(0,0,0,.28);
   --danger:#ff8f8f;
   --ok:#9ef0b2;
+  --purpleCard:#d9bef4;
+  --purpleText:#5f4b8b;
+  --purpleHeading:#7c4bb3;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -27,7 +32,8 @@ body{
   position:relative;
 }
 
-.sky, .lantern-layer{
+.sky,
+.lantern-layer{
   position:fixed;
   inset:0;
   pointer-events:none;
@@ -47,8 +53,14 @@ body{
 }
 
 @keyframes twinkle{
-  0%,100%{opacity:.2; transform:scale(1)}
-  50%{opacity:1; transform:scale(1.7)}
+  0%,100%{
+    opacity:.2;
+    transform:scale(1);
+  }
+  50%{
+    opacity:1;
+    transform:scale(1.7);
+  }
 }
 
 .moon-wrap{
@@ -83,8 +95,12 @@ body{
 }
 
 @keyframes moonFloat{
-  0%,100%{transform:translateY(0px)}
-  50%{transform:translateY(-10px)}
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-10px);
+  }
 }
 
 .moon-glow-strong{
@@ -92,8 +108,12 @@ body{
 }
 
 @keyframes moonPulse{
-  0%,100%{filter:drop-shadow(0 0 12px rgba(255,211,105,.35))}
-  50%{filter:drop-shadow(0 0 30px rgba(255,211,105,.85))}
+  0%,100%{
+    filter:drop-shadow(0 0 12px rgba(255,211,105,.35));
+  }
+  50%{
+    filter:drop-shadow(0 0 30px rgba(255,211,105,.85));
+  }
 }
 
 .lantern{
@@ -131,8 +151,12 @@ body{
 }
 
 @keyframes sway{
-  0%,100%{transform:rotate(3deg) translateY(0)}
-  50%{transform:rotate(-3deg) translateY(3px)}
+  0%,100%{
+    transform:rotate(3deg) translateY(0);
+  }
+  50%{
+    transform:rotate(-3deg) translateY(3px);
+  }
 }
 
 .wrap{
@@ -234,8 +258,14 @@ p.lead{
 }
 
 @keyframes fadeUp{
-  from{opacity:0; transform:translateY(18px)}
-  to{opacity:1; transform:translateY(0)}
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .cartoon-row{
@@ -250,8 +280,12 @@ p.lead{
 }
 
 @keyframes floatIcons{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-6px)}
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-6px);
+  }
 }
 
 .count-card{
@@ -349,7 +383,9 @@ button:hover{
   line-height:1.7;
 }
 
-.surprise-wrap{margin-top:18px;}
+.surprise-wrap{
+  margin-top:18px;
+}
 
 .tiny-hint{
   font-size:.92rem;
@@ -375,14 +411,23 @@ button:hover{
   font-size:.95rem;
 }
 
-.reveal-animate{animation:nameReveal 1.4s ease;}
-
-@keyframes nameReveal{
-  0%{opacity:0; transform:translateY(20px) scale(.98)}
-  100%{opacity:1; transform:translateY(0) scale(1)}
+.reveal-animate{
+  animation:nameReveal 1.4s ease;
 }
 
-.lock-box, .admin-box{
+@keyframes nameReveal{
+  0%{
+    opacity:0;
+    transform:translateY(20px) scale(.98);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.lock-box,
+.admin-box{
   max-width:760px;
   margin:22px auto 0;
   padding:22px;
@@ -394,8 +439,13 @@ button:hover{
   color:var(--muted);
 }
 
-.ok{color:var(--ok);}
-.danger{color:var(--danger);}
+.ok{
+  color:var(--ok);
+}
+
+.danger{
+  color:var(--danger);
+}
 
 .admin-bottom{
   margin-top:24px;
@@ -415,8 +465,14 @@ button:hover{
 }
 
 @keyframes openFade{
-  0%{opacity:1; transform:scale(1)}
-  100%{opacity:0; transform:scale(.92)}
+  0%{
+    opacity:1;
+    transform:scale(1);
+  }
+  100%{
+    opacity:0;
+    transform:scale(.92);
+  }
 }
 
 #mainContent.showing{
@@ -424,8 +480,14 @@ button:hover{
 }
 
 @keyframes contentRise{
-  0%{opacity:0; transform:translateY(24px)}
-  100%{opacity:1; transform:translateY(0)}
+  0%{
+    opacity:0;
+    transform:translateY(24px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .eid-popup{
@@ -455,103 +517,238 @@ button:hover{
   margin-bottom:10px;
 }
 
-.gift-box-big{
-  font-size:88px;
-  cursor:pointer;
-  user-select:none;
-  animation:giftFloat 2.2s ease-in-out infinite;
-  margin-top:10px;
-}
-
-@keyframes giftFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-}
-
 @keyframes popupRise{
-  from{opacity:0; transform:translateY(16px) scale(.96)}
-  to{opacity:1; transform:translateY(0) scale(1)}
+  from{
+    opacity:0;
+    transform:translateY(16px) scale(.96);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
 }
 
-@media (max-width: 900px){
-  .grid{grid-template-columns:1fr;}
-}
-
-@media (max-width: 640px){
-  body{padding-bottom:40px}
-  .wrap{width:min(100%, calc(100% - 18px)); padding-top:20px}
-  .badge{font-size:.86rem}
-  p.lead{font-size:.98rem}
-  h1{padding-right:70px;}
-  .count-card, .card, .message-box, .quote-box, .eidi-box, .welcome-card, .admin-box, .lock-box, .eid-popup-card{border-radius:20px}
-  .card{padding:18px}
-  button{width:100%; max-width:320px}
-  .action-row{gap:10px}
-  .moon-wrap{top:70px; right:8px; width:78px; height:78px}
-  .moon::after{width:64px; height:64px; left:22px; top:6px}
-  .lantern{transform:scale(.85)}
-  .gift-box-big{font-size:72px;}
-}
-/* Eid Card */
+/* Eid card */
 
 .eid-card-section{
-margin-top:30px;
-text-align:center;
+  margin-top:10px;
+  margin-bottom:24px;
+  text-align:center;
 }
 
 .card-title{
-color:#ffd369;
-margin-bottom:20px;
+  margin:0 0 18px;
+  font-size:clamp(2rem, 5vw, 3.4rem);
+  color:var(--gold);
+  font-weight:800;
 }
 
 .eid-card{
-width:340px;
-height:220px;
-margin:auto;
-position:relative;
-cursor:pointer;
-perspective:1000px;
+  width:min(650px, 95%);
+  margin:0 auto;
+  cursor:pointer;
 }
 
 .card-front,
 .card-inside{
-
-position:absolute;
-width:100%;
-height:100%;
-border-radius:16px;
-background:#caa7ff;
-color:#222;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-transition:transform .7s;
-backface-visibility:hidden;
-box-shadow:0 20px 40px rgba(0,0,0,.35);
-
+  border-radius:28px;
+  box-shadow:0 18px 40px rgba(0,0,0,.28);
 }
 
 .card-front{
-background:#d7b9ff;
+  display:block;
+}
+
+.card-front-inner{
+  min-height:260px;
+  background:var(--purpleCard);
+  border-radius:28px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:30px 24px;
+  text-align:center;
+}
+
+.cover-heart{
+  font-size:72px;
+  line-height:1;
+  margin-bottom:24px;
+}
+
+.cover-eid-text{
+  font-size:clamp(2rem, 4vw, 3.4rem);
+  font-weight:800;
+  color:var(--gold);
+  margin-bottom:26px;
+}
+
+.cover-subtext{
+  font-size:clamp(1.2rem, 2.5vw, 2rem);
+  color:#222;
+  font-weight:500;
 }
 
 .card-inside{
-transform:rotateY(180deg);
-background:white;
-padding:20px;
-text-align:center;
+  display:none;
+  background:var(--purpleCard);
+  padding:20px;
+  margin-top:0;
+}
+
+.inside-paper{
+  min-height:260px;
+  background:#fff;
+  border-radius:20px;
+  padding:34px 24px;
+  color:var(--purpleText);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+}
+
+.inside-paper h3{
+  color:var(--purpleHeading);
+  font-size:clamp(2rem, 4vw, 3rem);
+  margin:0 0 18px;
+}
+
+.inside-paper p{
+  font-size:clamp(1.1rem, 2.2vw, 1.5rem);
+  line-height:1.8;
+  margin:0 0 14px;
 }
 
 .eid-card.open .card-front{
-transform:rotateY(180deg);
+  display:none;
 }
 
 .eid-card.open .card-inside{
-transform:rotateY(0deg);
+  display:block;
 }
 
-.heart{
-font-size:36px;
-margin-bottom:10px;
+.eid-card-badge{
+  display:inline-block;
+  margin-top:18px;
+  padding:10px 22px;
+  border-radius:999px;
+  border:1px solid rgba(255,211,105,.35);
+  background:rgba(255,255,255,.05);
+  color:var(--gold);
+  font-size:1.4rem;
+  font-weight:700;
+  box-shadow:var(--shadow);
+}
+
+/* simple gift */
+
+.gift-box-big{
+  font-size:80px;
+  margin:25px auto;
+  cursor:pointer;
+  transition:transform .3s ease;
+  display:inline-block;
+}
+
+.gift-box-big:hover{
+  transform:scale(1.1) rotate(-5deg);
+}
+
+@media (max-width:900px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:768px){
+  .card-front-inner,
+  .inside-paper{
+    min-height:220px;
+  }
+
+  .cover-heart{
+    font-size:56px;
+    margin-bottom:18px;
+  }
+
+  .cover-eid-text{
+    margin-bottom:18px;
+  }
+
+  .eid-card-badge{
+    font-size:1rem;
+    padding:8px 16px;
+  }
+}
+
+@media (max-width:640px){
+  body{
+    padding-bottom:40px;
+  }
+
+  .wrap{
+    width:min(100%, calc(100% - 18px));
+    padding-top:20px;
+  }
+
+  .badge{
+    font-size:.86rem;
+  }
+
+  p.lead{
+    font-size:.98rem;
+  }
+
+  h1{
+    padding-right:70px;
+  }
+
+  .count-card,
+  .card,
+  .message-box,
+  .quote-box,
+  .eidi-box,
+  .welcome-card,
+  .admin-box,
+  .lock-box,
+  .eid-popup-card{
+    border-radius:20px;
+  }
+
+  .card{
+    padding:18px;
+  }
+
+  button{
+    width:100%;
+    max-width:320px;
+  }
+
+  .action-row{
+    gap:10px;
+  }
+
+  .moon-wrap{
+    top:70px;
+    right:8px;
+    width:78px;
+    height:78px;
+  }
+
+  .moon::after{
+    width:64px;
+    height:64px;
+    left:22px;
+    top:6px;
+  }
+
+  .lantern{
+    transform:scale(.85);
+  }
+
+  .gift-box-big{
+    font-size:68px;
+  }
 }
