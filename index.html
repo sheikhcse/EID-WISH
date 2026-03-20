@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eid Surprise</title>
   <link rel="stylesheet" href="css/style.css" />
-  <script type="module" src="js/script.js"></script>
 </head>
 <body>
   <div class="sky" id="sky"></div>
@@ -40,37 +39,12 @@
   </section>
 
   <main class="wrap hidden" id="mainContent">
-    <section class="eid-card-section">
-      <h2 class="card-title">Open Eid Card ✉️</h2>
-
-      <div class="eid-card" onclick="openCard()">
-        <div class="card-front" id="cardFront">
-          <div class="heart">💜</div>
-          <h3>Eid Mubarak</h3>
-          <p>Click to open your Eid card</p>
-        </div>
-
-        <div class="card-inside" id="cardInside">
-          <h2>Eid Mubarak 🌙</h2>
-
-          <p>
-            May this Eid bring happiness, joy, and Allah's blessings
-            into your life.
-          </p>
-
-          <p>
-            And lots of peace, smiles, and beautiful moments.
-          </p>
-        </div>
-      </div>
-    </section>
-
     <div class="badge">For Eid 🌙✨</div>
 
     <section id="countdownView">
       <h1>Counting down to Eid</h1>
       <p class="lead">
-        Eid wishes with soft vibes, tiny surprises, and a very tiny virtual Eidi waiting inside.
+        This surprise stays available until today at 6:30 PM.
       </p>
 
       <div class="count-card">
@@ -81,7 +55,7 @@
         <div class="action-row">
           <button id="nextStepBtn" onclick="tryOpenEidContent()">Open Eid surprise 🌙</button>
         </div>
-        <div id="publicStatus" class="status">Checking unlock status...</div>
+        <!-- <div id="publicStatus" class="status">Checking unlock status...</div> -->
       </div>
     </section>
 
@@ -93,6 +67,35 @@
     </section>
 
     <section id="content" class="hidden">
+      <section class="eid-card-section">
+        <h2 class="card-title">Open Eid Card ✉️</h2>
+
+        <div class="eid-card" id="openEidCard" onclick="openCard()">
+          <div class="card-front">
+            <div class="card-front-inner">
+              <div class="cover-heart">💜</div>
+              <div class="cover-eid-text">Eid Mubarak</div>
+              <div class="cover-subtext">Open your Eid card</div>
+            </div>
+          </div>
+
+          <div class="card-inside">
+            <div class="inside-paper">
+              <h3>Eid Mubarak 🌙</h3>
+              <p>
+                May this Eid bring happiness, joy, and Allah's blessings
+                into your life.
+              </p>
+              <p>
+                And lots of peace, smiles, and beautiful moments.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="eid-card-badge">For Eid 🌙✨</div>
+      </section>
+
       <div class="grid">
         <div class="card">
           <h3>Little wish</h3>
@@ -144,8 +147,11 @@
         <button onclick="toggleMusic()" id="musicBtn">Play soft music 🎵</button>
       </div>
 
-      <audio id="bgMusic" loop>
-        <source src="assets/audio/ReelAudio-97737.mp3" type="audio/mpeg" />
+      <audio
+        id="bgMusic"
+        loop
+        preload="auto"
+        src="assets/audio/ReelAudio-97737.mp3">
       </audio>
 
       <div class="surprise-wrap">
