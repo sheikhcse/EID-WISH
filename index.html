@@ -1,13 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eid Surprise Final</title>
+  <title>Eid Surprise</title>
   <link rel="stylesheet" href="css/style.css" />
   <script type="module" src="js/script.js"></script>
-  <source src="assets/audio/ReelAudio-97737.mp3" type="audio/mpeg" />
 </head>
 <body>
   <div class="sky" id="sky"></div>
@@ -30,7 +28,7 @@
       <h1>A little moonlit surprise awaits...</h1>
 
       <p class="lead">
-        Eid wish with soft vibes, tiny surprises, and a very tiny virtual Eidi waiting inside.
+        Eid wishes with soft vibes, tiny surprises, and a very tiny virtual Eidi waiting inside.
       </p>
 
       <button onclick="enterPage()" id="enterBtn">Unlock a little Eid magic 🎁</button>
@@ -43,41 +41,36 @@
 
   <main class="wrap hidden" id="mainContent">
     <section class="eid-card-section">
+      <h2 class="card-title">Open Eid Card ✉️</h2>
 
-<h2 class="card-title">Open Eid Card ✉️</h2>
+      <div class="eid-card" onclick="openCard()">
+        <div class="card-front" id="cardFront">
+          <div class="heart">💜</div>
+          <h3>Eid Mubarak</h3>
+          <p>Click to open your Eid card</p>
+        </div>
 
-<div class="eid-card" onclick="openCard()">
+        <div class="card-inside" id="cardInside">
+          <h2>Eid Mubarak 🌙</h2>
 
-<div class="card-front" id="cardFront">
-<div class="heart">💜</div>
-<h3>Eid Mubarak</h3>
-<p>Click to open your Eid card</p>
-</div>
+          <p>
+            May this Eid bring happiness, joy, and Allah's blessings
+            into your life.
+          </p>
 
-<div class="card-inside" id="cardInside">
+          <p>
+            And lots of peace, smiles, and beautiful moments.
+          </p>
+        </div>
+      </div>
+    </section>
 
-<h2>Eid Mubarak 🌙</h2>
-
-<p>
-May this Eid bring happiness, joy and Allah's blessings
-into your life.
-</p>
-
-<p>
-And lots of peace, smiles and beautiful moments.
-</p>
-
-</div>
-
-</div>
-
-</section>
     <div class="badge">For Eid 🌙✨</div>
 
     <section id="countdownView">
       <h1>Counting down to Eid</h1>
       <p class="lead">
-        Eid wish with soft vibes, tiny surprises, and a very tiny virtual Eidi waiting inside.
+        Eid wishes with soft vibes, tiny surprises, and a very tiny virtual Eidi waiting inside.
       </p>
 
       <div class="count-card">
@@ -93,9 +86,9 @@ And lots of peace, smiles and beautiful moments.
     </section>
 
     <section id="eidView" class="hidden">
-      <h1 id="eidTitle">Eid Mubarak Tasnu 🌙</h1>
+      <h1 id="eidTitle">Eid Mubarak 🌙</h1>
       <p class="lead">
-        For you, a peaceful Eid wish filled with soft moments, gentle smiles, good food, and beautiful memories.
+        A peaceful Eid wish filled with soft moments, gentle smiles, good food, and beautiful memories.
       </p>
     </section>
 
@@ -103,17 +96,17 @@ And lots of peace, smiles and beautiful moments.
       <div class="grid">
         <div class="card">
           <h3>Little wish</h3>
-          <p>May this Eid bring you calm days, sweet memories, and a heart that feels light.</p>
+          <p>May this Eid bring calm days, sweet memories, and a heart that feels light.</p>
         </div>
 
         <div class="card">
           <h3>Cute note</h3>
-          <p>Hope your Eid outfit looks perfect, tomar pictures gula khub shundor ashe, ar mood tao onek bhalo thake 😄</p>
+          <p>Hope your Eid outfit looks perfect, your pictures turn out beautiful, and your mood stays amazing 😄</p>
         </div>
 
         <div class="card">
           <h3>Funny corner</h3>
-          <p>Eid reminder: eat like nobody is judging… tarpor biryani ke blame koro 🍽️</p>
+          <p>Eid reminder: eat like nobody is judging… then blame the biryani later 🍽️</p>
         </div>
       </div>
 
@@ -164,7 +157,7 @@ And lots of peace, smiles and beautiful moments.
     <section id="adminPanel" class="admin-box hidden">
       <h3>Admin control</h3>
       <p class="lead">
-        Tumi ekhane theke user der access control korte parbe.
+        You can control user access from here.
       </p>
       <div class="status" id="adminStatus">Admin mode active.</div>
       <div class="action-row">
@@ -177,7 +170,7 @@ And lots of peace, smiles and beautiful moments.
     <div id="eidPopup" class="eid-popup hidden" style="display:none;">
       <div class="eid-popup-card">
         <div class="popup-moon">🌙</div>
-        <h2>Eid Mubarak Tasnu ✨</h2>
+        <h2>Eid Mubarak ✨</h2>
       </div>
     </div>
 
